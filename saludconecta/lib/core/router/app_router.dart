@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../domain/models/enums.dart';
+import '../../features/about/about_screen.dart';
 import '../../features/admission/admission_agenda_screen.dart';
 import '../../features/admission/admission_inbox_screen.dart';
 import '../../features/admission/follow_up_screen.dart';
@@ -13,6 +14,8 @@ import '../../features/auth/welcome_screen.dart';
 import '../../features/billing/billing_pending_screen.dart';
 import '../../features/billing/claims_screen.dart';
 import '../../features/billing/closure_screen.dart';
+import '../../features/diagrams/case_diagram_screen.dart';
+import '../../features/diagrams/process_diagrams_screen.dart';
 import '../../features/doctor/consultation_screen.dart';
 import '../../features/doctor/doctor_agenda_screen.dart';
 import '../../features/doctor/issue_results_screen.dart';
@@ -31,12 +34,10 @@ import '../../features/shared/case_detail/case_detail_screen.dart';
 import '../../features/shared/not_found_screen.dart';
 import '../../features/shared/role_shell.dart';
 import '../../state/session_provider.dart';
-import '../widgets/coming_soon_screen.dart';
 import 'app_routes.dart';
 import 'route_guard.dart';
 
-/// Rutas de la app (§6 del spec) con `redirect` por rol. Lo que se construye en etapas posteriores
-/// apunta por ahora a `ComingSoonScreen`; cada etapa reemplaza su pantalla aquí.
+/// Rutas de la app (§6 del spec) con `redirect` por rol.
 class AppRouter {
   const AppRouter._();
 
@@ -132,7 +133,7 @@ class AppRouter {
           routes: [
             GoRoute(
               path: 'diagrama',
-              builder: (context, state) => const ComingSoonScreen(title: 'Diagrama del caso', stage: 10),
+              builder: (context, state) => CaseDiagramScreen(caseId: state.pathParameters['id']!),
             ),
             for (final action in CaseAction.values)
               GoRoute(
@@ -143,17 +144,17 @@ class AppRouter {
         ),
         GoRoute(
           path: AppRoutes.process,
-          builder: (context, state) => const ComingSoonScreen(title: 'Diagramas del proceso', stage: 10),
+          builder: (context, state) => const ProcessDiagramsScreen(),
         ),
         GoRoute(
           path: AppRoutes.about,
-          builder: (context, state) => const ComingSoonScreen(title: 'Acerca de', stage: 10),
+          builder: (context, state) => const AboutScreen(),
         ),
       ],
     );
   }
 
-  /// Pantalla de cada acción sobre un caso; las que aún no se construyen apuntan a `ComingSoonScreen`.
+  /// Pantalla de cada acción sobre un caso.
   static Widget _caseAction(CaseAction action, String caseId) => switch (action) {
         CaseAction.consent => ConsentScreen(caseId: caseId),
         CaseAction.waitingRoom => WaitingRoomScreen(caseId: caseId),

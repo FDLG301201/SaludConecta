@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:saludconecta/core/constants/app_illustrations.dart';
 import 'package:saludconecta/core/widgets/actor_chip.dart';
-import 'package:saludconecta/core/widgets/coming_soon_screen.dart';
 import 'package:saludconecta/core/widgets/empty_state.dart';
 import 'package:saludconecta/core/widgets/loading_button.dart';
 import 'package:saludconecta/core/widgets/status_chip.dart';
@@ -57,10 +56,5 @@ void main() {
     );
     expect(find.text('Aún no tienes citas'), findsOneWidget);
     expect(find.text('Solicitar cita'), findsOneWidget);
-  });
-
-  testWidgets('ComingSoonScreen dice en qué etapa se construye la pantalla', (tester) async {
-    await tester.pumpWidget(const MaterialApp(home: ComingSoonScreen(title: 'Mis citas', stage: 5)));
-    expect(find.text('Esta pantalla se construye en la etapa 5 del plan.'), findsOneWidget);
   });
 }
