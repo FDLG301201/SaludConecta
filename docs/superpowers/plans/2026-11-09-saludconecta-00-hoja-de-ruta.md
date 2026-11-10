@@ -90,7 +90,7 @@ Estas reglas valen para **todas** las etapas.
 | # | Etapa | Plan | Spec | Resultado verificable | Estado |
 |---|---|---|---|---|---|
 | 1 | Andamiaje | [01-andamiaje](2026-11-09-saludconecta-01-andamiaje.md) | §2, §3, §11, §15 | App mínima con tema y ruta `/bienvenida`. Compila en web y Android. Pruebas de formatos y de arranque | hecha |
-| 2 | Dominio y datos | [02-dominio-y-datos](2026-11-09-saludconecta-02-dominio-y-datos.md) | §4, §13 | Modelos, reglas, flujo, calculadoras, gateways y semilla, con pruebas unitarias en verde | pendiente |
+| 2 | Dominio y datos | [02-dominio-y-datos](2026-11-09-saludconecta-02-dominio-y-datos.md) | §4, §13 | Modelos, reglas, flujo, calculadoras, gateways y semilla, con pruebas unitarias en verde | hecha |
 | 3 | Ilustraciones e infografías | se escribe al cerrar la etapa 2 | §9 | 29 SVG y 2 infografías en `assets/`. Catálogo `AppIllustrations` y prueba que carga cada SVG | pendiente |
 | 4 | Estado, ingreso y shells | al cerrar la 3 | §5, §6 (rutas, redirect, comunes), §8 | Providers, bienvenida, ingreso, cambio de rol, shells por rol, detalle del caso con línea de tiempo y `case_provider_test` | pendiente |
 | 5 | Flujo del paciente | al cerrar la 4 | §6 Paciente | Solicitar cita, mis citas, servicios, perfil, consentimiento con firma, sala de espera, videollamada, resultados con QR y encuesta | pendiente |
