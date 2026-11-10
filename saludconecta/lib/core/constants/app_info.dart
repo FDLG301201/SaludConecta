@@ -8,6 +8,12 @@ class AppInfo {
   static const project = 'Proyecto del 2do parcial';
   static const term = 'Cuatrimestre C11';
 
-  /// Integrantes del equipo. Pendiente: poner los nombres reales antes de entregar.
-  static const teamMembers = <String>['Integrante 1', 'Integrante 2', 'Integrante 3'];
+  /// Integrantes del equipo, con su matrícula.
+  static const teamMembers = <String>[
+    'Francisco Daniel Lora · A00114255',
+    'Rafiel Colon · A00109961',
+    'Gabriel Peña · A00114138',
+    'Ruby Rosario · A00105745',
+    'Justin S. Uceta Montero · A00116654',
+  ];
 }

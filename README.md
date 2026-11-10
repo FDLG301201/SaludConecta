@@ -5,6 +5,7 @@
 | Carpeta | Contenido |
 |---|---|
 | [`saludconecta/`](saludconecta/README.md) | **Fuentes** de la app. Su README explica cómo ejecutarla y trae el guion de demo |
+| [`docs/GUIA-SALUDCONECTA.md`](docs/GUIA-SALUDCONECTA.md) | **Guía completa**: contexto del aplicativo, arquitectura, cómo ejecutarla en local desde cero y guion de demo |
 | `docs/infografias/` | Las dos infografías del equipo |
 | `docs/superpowers/specs/` | Documento de diseño de la app |
 | `docs/superpowers/plans/` | Hoja de ruta y plan de cada una de las 11 etapas de implementación |
