@@ -89,7 +89,7 @@ Estas reglas valen para **todas** las etapas.
 
 | # | Etapa | Plan | Spec | Resultado verificable | Estado |
 |---|---|---|---|---|---|
-| 1 | Andamiaje | [01-andamiaje](2026-11-09-saludconecta-01-andamiaje.md) | §2, §3, §11, §15 | App mínima con tema y ruta `/bienvenida`. Compila en web y Android. Pruebas de formatos y de arranque | pendiente |
+| 1 | Andamiaje | [01-andamiaje](2026-11-09-saludconecta-01-andamiaje.md) | §2, §3, §11, §15 | App mínima con tema y ruta `/bienvenida`. Compila en web y Android. Pruebas de formatos y de arranque | hecha |
 | 2 | Dominio y datos | [02-dominio-y-datos](2026-11-09-saludconecta-02-dominio-y-datos.md) | §4, §13 | Modelos, reglas, flujo, calculadoras, gateways y semilla, con pruebas unitarias en verde | pendiente |
 | 3 | Ilustraciones e infografías | se escribe al cerrar la etapa 2 | §9 | 29 SVG y 2 infografías en `assets/`. Catálogo `AppIllustrations` y prueba que carga cada SVG | pendiente |
 | 4 | Estado, ingreso y shells | al cerrar la 3 | §5, §6 (rutas, redirect, comunes), §8 | Providers, bienvenida, ingreso, cambio de rol, shells por rol, detalle del caso con línea de tiempo y `case_provider_test` | pendiente |
@@ -125,6 +125,18 @@ Estas reglas valen para **todas** las etapas.
   - "a. m." y "p. m." llevan un espacio no separable (U+00A0), que se reemplaza por un espacio normal;
   - los meses cortos son "ene", "feb"… "sept", "oct", "nov", "dic";
   - los días van en minúscula ("jueves").
+
+### Notas para verificar en cada etapa
+
+Aprendidas al cerrar la etapa 1:
+
+- **Web:**
+  - con `preview_start` (`saludconecta-web`), la primera carga puede quedar en blanco mientras el servidor de desarrollo compila: se recarga la página unos 20 s después;
+  - `.claude/launch.json` usa la ruta absoluta del proyecto, así funciona desde cualquier carpeta.
+- **Android:**
+  - recompilar el APK (`flutter build apk --debug --target-platform android-x64`) **antes** de instalarlo;
+  - después de arrancar, el emulador deja la pantalla apagada y `screencap` sale negro: antes de capturar, enviar `adb shell input keyevent KEYCODE_WAKEUP`.
+  - `adb` está en `C:\Users\Helen\AppData\Local\Android\Sdk\platform-tools\adb.exe`.
 
 ## Infografías
 
