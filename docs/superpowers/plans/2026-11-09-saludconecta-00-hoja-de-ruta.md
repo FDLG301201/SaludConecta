@@ -92,7 +92,7 @@ Estas reglas valen para **todas** las etapas.
 | 1 | Andamiaje | [01-andamiaje](2026-11-09-saludconecta-01-andamiaje.md) | §2, §3, §11, §15 | App mínima con tema y ruta `/bienvenida`. Compila en web y Android. Pruebas de formatos y de arranque | hecha |
 | 2 | Dominio y datos | [02-dominio-y-datos](2026-11-09-saludconecta-02-dominio-y-datos.md) | §4, §13 | Modelos, reglas, flujo, calculadoras, gateways y semilla, con pruebas unitarias en verde | hecha |
 | 3 | Ilustraciones e infografías | [03-ilustraciones](2026-11-09-saludconecta-03-ilustraciones.md) | §9 | 29 SVG y 2 infografías en `assets/`. Catálogo `AppIllustrations` y prueba que carga cada SVG | hecha |
-| 4 | Estado, ingreso y shells | al cerrar la 3 | §5, §6 (rutas, redirect, comunes), §8 | Providers, bienvenida, ingreso, cambio de rol, shells por rol, detalle del caso con línea de tiempo y `case_provider_test` | pendiente |
+| 4 | Estado, ingreso y shells | [04-estado-y-shells](2026-11-09-saludconecta-04-estado-y-shells.md) | §5, §6 (rutas, redirect, comunes), §8 | Providers, bienvenida, ingreso, cambio de rol, shells por rol, detalle del caso con línea de tiempo y `case_provider_test` | hecha |
 | 5 | Flujo del paciente | al cerrar la 4 | §6 Paciente | Solicitar cita, mis citas, servicios, perfil, consentimiento con firma, sala de espera, videollamada, resultados con QR y encuesta | pendiente |
 | 6 | Flujo de Admisión | al cerrar la 5 | §6 Admisión | Bandeja con filtros, *stepper* de los pasos 2–5 (con rechazo → privado), agenda y seguimiento | pendiente |
 | 7 | Flujo del Médico | al cerrar la 6 | §6 Médico | Agenda, videollamada con notas clínicas y emisión de resultados | pendiente |
@@ -128,10 +128,12 @@ Estas reglas valen para **todas** las etapas.
 
 ### Notas para verificar en cada etapa
 
-Aprendidas al cerrar la etapa 1:
+Aprendidas al cerrar las etapas 1 y 4:
 
 - **Web:**
   - con `preview_start` (`saludconecta-web`), la primera carga puede quedar en blanco mientras el servidor de desarrollo compila: se recarga la página unos 20 s después;
+  - si el panel del navegador está oculto, la página corre en segundo plano y las animaciones se frenan. Una hoja o una transición puede tardar en verse: se espera 1 o 2 s y se vuelve a capturar, sin repetir el clic;
+  - el panel mide unos 800 px de ancho, así que la web muestra el diseño ancho (riel lateral). El diseño angosto (barra inferior) se revisa en Android;
   - `.claude/launch.json` usa la ruta absoluta del proyecto, así funciona desde cualquier carpeta.
 - **Android:**
   - recompilar el APK (`flutter build apk --debug --target-platform android-x64`) **antes** de instalarlo;
