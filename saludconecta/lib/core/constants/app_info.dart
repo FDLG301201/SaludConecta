@@ -14,5 +14,6 @@ class AppInfo {
     'Rafiel Colon · A00109961',
     'Gabriel Peña · A00114138',
     'Ruby Rosario · A00105745',
+    'Justin S. Uceta Montero · A00116654',
   ];
 }
