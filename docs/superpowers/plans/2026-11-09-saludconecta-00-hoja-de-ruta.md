@@ -89,17 +89,17 @@ Estas reglas valen para **todas** las etapas.
 
 | # | Etapa | Plan | Spec | Resultado verificable | Estado |
 |---|---|---|---|---|---|
-| 1 | Andamiaje | [01-andamiaje](2026-11-09-saludconecta-01-andamiaje.md) | §2, §3, §11, §15 | App mínima con tema y ruta `/bienvenida`. Compila en web y Android. Pruebas de formatos y de arranque | pendiente |
-| 2 | Dominio y datos | [02-dominio-y-datos](2026-11-09-saludconecta-02-dominio-y-datos.md) | §4, §13 | Modelos, reglas, flujo, calculadoras, gateways y semilla, con pruebas unitarias en verde | pendiente |
-| 3 | Ilustraciones e infografías | se escribe al cerrar la etapa 2 | §9 | 29 SVG y 2 infografías en `assets/`. Catálogo `AppIllustrations` y prueba que carga cada SVG | pendiente |
-| 4 | Estado, ingreso y shells | al cerrar la 3 | §5, §6 (rutas, redirect, comunes), §8 | Providers, bienvenida, ingreso, cambio de rol, shells por rol, detalle del caso con línea de tiempo y `case_provider_test` | pendiente |
-| 5 | Flujo del paciente | al cerrar la 4 | §6 Paciente | Solicitar cita, mis citas, servicios, perfil, consentimiento con firma, sala de espera, videollamada, resultados con QR y encuesta | pendiente |
-| 6 | Flujo de Admisión | al cerrar la 5 | §6 Admisión | Bandeja con filtros, *stepper* de los pasos 2–5 (con rechazo → privado), agenda y seguimiento | pendiente |
-| 7 | Flujo del Médico | al cerrar la 6 | §6 Médico | Agenda, videollamada con notas clínicas y emisión de resultados | pendiente |
-| 8 | Flujo de Facturación | al cerrar la 7 | §6 Facturación | Pendientes, cierre (factura, reclamación, auditoría y pago) y reclamaciones | pendiente |
-| 9 | Indicadores | al cerrar la 8 | §7 | Las 4 pestañas con sus gráficas y KPIs, y las gráficas del perfil del paciente | pendiente |
-| 10 | Diagramas y Acerca de | al cerrar la 9 | §10, §6 Acerca de | Diagramas de flujo y de carriles con `CustomPainter`, modo caso, diagrama de arquitectura y Acerca de | pendiente |
-| 11 | Cierre | al cerrar la 10 | §12, §14 | Pruebas de widgets, `analyze`, verificación en Chrome y Android, y README con el guion de demo | pendiente |
+| 1 | Andamiaje | [01-andamiaje](2026-11-09-saludconecta-01-andamiaje.md) | §2, §3, §11, §15 | App mínima con tema y ruta `/bienvenida`. Compila en web y Android. Pruebas de formatos y de arranque | hecha |
+| 2 | Dominio y datos | [02-dominio-y-datos](2026-11-09-saludconecta-02-dominio-y-datos.md) | §4, §13 | Modelos, reglas, flujo, calculadoras, gateways y semilla, con pruebas unitarias en verde | hecha |
+| 3 | Ilustraciones e infografías | [03-ilustraciones](2026-11-09-saludconecta-03-ilustraciones.md) | §9 | 29 SVG y 2 infografías en `assets/`. Catálogo `AppIllustrations` y prueba que carga cada SVG | hecha |
+| 4 | Estado, ingreso y shells | [04-estado-y-shells](2026-11-09-saludconecta-04-estado-y-shells.md) | §5, §6 (rutas, redirect, comunes), §8 | Providers, bienvenida, ingreso, cambio de rol, shells por rol, detalle del caso con línea de tiempo y `case_provider_test` | hecha |
+| 5 | Flujo del paciente | [05-flujo-paciente](2026-11-09-saludconecta-05-flujo-paciente.md) | §6 Paciente | Solicitar cita, mis citas, servicios, perfil, consentimiento con firma, sala de espera, videollamada, resultados con QR y encuesta | hecha |
+| 6 | Flujo de Admisión | [06-flujo-admision](2026-11-10-saludconecta-06-flujo-admision.md) | §6 Admisión | Bandeja con filtros, *stepper* de los pasos 2–5 (con rechazo → privado), agenda y seguimiento | hecha |
+| 7 | Flujo del Médico | [07-flujo-medico](2026-11-10-saludconecta-07-flujo-medico.md) | §6 Médico | Agenda, videollamada con notas clínicas y emisión de resultados | hecha |
+| 8 | Flujo de Facturación | [08-flujo-facturacion](2026-11-10-saludconecta-08-flujo-facturacion.md) | §6 Facturación | Pendientes, cierre (factura, reclamación, auditoría y pago) y reclamaciones | hecha |
+| 9 | Indicadores | [09-indicadores](2026-11-10-saludconecta-09-indicadores.md) | §7 | Las 4 pestañas con sus gráficas y KPIs, y las gráficas del perfil del paciente | hecha |
+| 10 | Diagramas y Acerca de | [10-diagramas-y-acerca](2026-11-10-saludconecta-10-diagramas-y-acerca.md) | §10, §6 Acerca de | Diagramas de flujo y de carriles con `CustomPainter`, modo caso, diagrama de arquitectura y Acerca de | hecha |
+| 11 | Cierre | [11-cierre](2026-11-10-saludconecta-11-cierre.md) | §12, §14 | Pruebas de widgets, `analyze`, verificación en Chrome y Android, y README con el guion de demo | hecha |
 
 ## Entorno verificado (2026-11-09)
 
@@ -125,6 +125,28 @@ Estas reglas valen para **todas** las etapas.
   - "a. m." y "p. m." llevan un espacio no separable (U+00A0), que se reemplaza por un espacio normal;
   - los meses cortos son "ene", "feb"… "sept", "oct", "nov", "dic";
   - los días van en minúscula ("jueves").
+
+### Notas para verificar en cada etapa
+
+Aprendidas al cerrar las etapas 1, 4 y 5:
+
+- **Web:**
+  - con `preview_start` (`saludconecta-web`), la primera carga puede quedar en blanco mientras el servidor de desarrollo compila: se recarga la página unos 20 s después;
+  - si el panel del navegador está oculto, la página corre en segundo plano y las animaciones se frenan. Una hoja o una transición puede tardar en verse: se espera 1 o 2 s y se vuelve a capturar, sin repetir el clic;
+  - el panel mide unos 800 px de ancho, así que la web muestra el diseño ancho (riel lateral). El diseño angosto (barra inferior) se revisa en Android;
+  - `navigate` a la misma dirección con otro `#` no recarga la app. Para recargarla se abre la raíz, `http://localhost:8090/`;
+  - `.claude/launch.json` usa la ruta absoluta del proyecto, así funciona desde cualquier carpeta.
+- **Android:**
+  - recompilar el APK (`flutter build apk --debug --target-platform android-x64`) **antes** de instalarlo;
+  - después de arrancar, el emulador deja la pantalla apagada y `screencap` sale negro: antes de capturar, enviar `adb shell input keyevent KEYCODE_WAKEUP`.
+  - `adb` está en `C:\Users\Helen\AppData\Local\Android\Sdk\platform-tools\adb.exe`.
+- **Pruebas de widgets:**
+  - la fuente de las pruebas dibuja cada letra como un cuadro, así que los textos ocupan más que en un teléfono y parte del contenido queda fuera de la vista. Lo que no se ve no se encuentra: se usa `scrollUntilVisible` (o `ensureVisible`) y después `pump()` antes de `tap`, porque sin ese cuadro `tap` usa la posición vieja;
+  - con animaciones que no terminan (la videollamada) no sirve `pumpAndSettle`: se avanza con `pump(duración)`;
+  - si después del desplazamiento la lista sigue moviéndose por inercia, se espera con `pumpAndSettle()` antes de `tap` (etapa 7);
+  - un `SnackBar` puede tapar los botones de abajo: si el aviso va con otra acción (p. ej., abrir las notas), se muestra en esa pantalla y no en un `SnackBar`.
+- **Panel del navegador oculto:** a veces deja de responder del todo (no repinta ni recibe clics). En ese caso el recorrido se hace en el emulador Android.
+- **Hojas inferiores:** las que se abren desde una pestaña del shell llevan `useRootNavigator: true`. Cada pestaña tiene su propio Navigator y, sin eso, la hoja no cubre la barra superior.
 
 ## Infografías
 
