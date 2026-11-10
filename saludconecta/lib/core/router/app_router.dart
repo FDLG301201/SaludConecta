@@ -10,6 +10,9 @@ import '../../features/auth/patient_login_screen.dart';
 import '../../features/auth/role_selection_screen.dart';
 import '../../features/auth/staff_login_screen.dart';
 import '../../features/auth/welcome_screen.dart';
+import '../../features/doctor/consultation_screen.dart';
+import '../../features/doctor/doctor_agenda_screen.dart';
+import '../../features/doctor/issue_results_screen.dart';
 import '../../features/patient/appointments_screen.dart';
 import '../../features/patient/call/patient_video_call_screen.dart';
 import '../../features/patient/consent/consent_screen.dart';
@@ -102,11 +105,7 @@ class AppRouter {
             'Agenda',
             Icons.event_available_outlined,
             Icons.event_available,
-            (context, state) => CaseListScreen(
-              title: 'Mi agenda',
-              subtitle: 'Citas con los pasos 6 a 8 pendientes',
-              select: (cases, session) => cases.doctorAgenda(session.currentDoctor?.id ?? ''),
-            ),
+            (context, state) => const DoctorAgendaScreen(),
           ),
           _Tab(AppRoutes.doctorIndicators, 'Indicadores', Icons.insights_outlined, Icons.insights,
               (context, state) => const ComingSoonScreen(title: 'Indicadores', stage: 9, inShell: true)),
@@ -163,8 +162,8 @@ class AppRouter {
         CaseAction.results => ResultsScreen(caseId: caseId),
         CaseAction.survey => SurveyScreen(caseId: caseId),
         CaseAction.process => ProcessCaseScreen(caseId: caseId),
-        CaseAction.consultation => const ComingSoonScreen(title: 'Consulta', stage: 7),
-        CaseAction.issueResults => const ComingSoonScreen(title: 'Emitir resultados', stage: 7),
+        CaseAction.consultation => ConsultationScreen(caseId: caseId),
+        CaseAction.issueResults => IssueResultsScreen(caseId: caseId),
         CaseAction.closure => const ComingSoonScreen(title: 'Cierre administrativo', stage: 8),
       };
 
