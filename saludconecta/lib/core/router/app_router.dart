@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../domain/models/enums.dart';
+import '../../features/admission/admission_agenda_screen.dart';
+import '../../features/admission/admission_inbox_screen.dart';
+import '../../features/admission/follow_up_screen.dart';
+import '../../features/admission/process_case_screen.dart';
 import '../../features/auth/patient_login_screen.dart';
 import '../../features/auth/role_selection_screen.dart';
 import '../../features/auth/staff_login_screen.dart';
@@ -78,24 +82,16 @@ class AppRouter {
             'Bandeja',
             Icons.inbox_outlined,
             Icons.inbox,
-            (context, state) => CaseListScreen(
-              title: 'Bandeja de Admisión',
-              subtitle: 'Solicitudes con los pasos 2 a 5 pendientes',
-              select: (cases, session) => cases.admissionInbox(),
-            ),
+            (context, state) => const AdmissionInboxScreen(),
           ),
           _Tab(AppRoutes.admissionAgenda, 'Agenda', Icons.calendar_month_outlined, Icons.calendar_month,
-              (context, state) => const ComingSoonScreen(title: 'Agenda', stage: 6, inShell: true)),
+              (context, state) => const AdmissionAgendaScreen()),
           _Tab(
             AppRoutes.admissionFollowUp,
             'Seguimiento',
             Icons.call_outlined,
             Icons.call,
-            (context, state) => CaseListScreen(
-              title: 'Seguimiento',
-              subtitle: 'Casos con el paso 10 pendiente',
-              select: (cases, session) => cases.followUpCases(),
-            ),
+            (context, state) => const FollowUpScreen(),
           ),
           _Tab(AppRoutes.admissionIndicators, 'Indicadores', Icons.insights_outlined, Icons.insights,
               (context, state) => const ComingSoonScreen(title: 'Indicadores', stage: 9, inShell: true)),
@@ -166,7 +162,7 @@ class AppRouter {
         CaseAction.videoCall => PatientVideoCallScreen(caseId: caseId),
         CaseAction.results => ResultsScreen(caseId: caseId),
         CaseAction.survey => SurveyScreen(caseId: caseId),
-        CaseAction.process => const ComingSoonScreen(title: 'Procesar solicitud', stage: 6),
+        CaseAction.process => ProcessCaseScreen(caseId: caseId),
         CaseAction.consultation => const ComingSoonScreen(title: 'Consulta', stage: 7),
         CaseAction.issueResults => const ComingSoonScreen(title: 'Emitir resultados', stage: 7),
         CaseAction.closure => const ComingSoonScreen(title: 'Cierre administrativo', stage: 8),

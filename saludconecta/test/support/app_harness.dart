@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:saludconecta/app.dart';
 import 'package:saludconecta/app_dependencies.dart';
 import 'package:saludconecta/core/router/app_routes.dart';
+import 'package:saludconecta/domain/models/enums.dart';
 import 'package:saludconecta/domain/models/telemedicine_case.dart';
 import 'package:saludconecta/domain/process/process_step.dart';
 
@@ -27,6 +28,22 @@ Widget buildTestApp({String initialLocation = AppRoutes.welcome}) =>
 AppDependencies patientDependencies(String patientId) {
   final deps = testDependencies(initialLocation: AppRoutes.patientHome);
   deps.session.loginPatient(deps.catalog.patientById(patientId));
+  return deps;
+}
+
+/// Dependencias con el personal de [role] en sesión (para el médico, el de [doctorId]); la app abre en su inicio.
+AppDependencies staffDependencies(UserRole role, {String? doctorId}) {
+  final deps = testDependencies(initialLocation: AppRoutes.home(role));
+  switch (role) {
+    case UserRole.admission:
+      deps.session.loginStaff(deps.catalog.staffFor(Actor.admission));
+    case UserRole.billing:
+      deps.session.loginStaff(deps.catalog.staffFor(Actor.billing));
+    case UserRole.doctor:
+      deps.session.loginDoctor(deps.catalog.doctorById(doctorId!));
+    case UserRole.patient:
+      throw ArgumentError('Para el paciente se usa patientDependencies.');
+  }
   return deps;
 }
 

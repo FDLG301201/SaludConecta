@@ -94,7 +94,7 @@ Estas reglas valen para **todas** las etapas.
 | 3 | Ilustraciones e infografías | [03-ilustraciones](2026-11-09-saludconecta-03-ilustraciones.md) | §9 | 29 SVG y 2 infografías en `assets/`. Catálogo `AppIllustrations` y prueba que carga cada SVG | hecha |
 | 4 | Estado, ingreso y shells | [04-estado-y-shells](2026-11-09-saludconecta-04-estado-y-shells.md) | §5, §6 (rutas, redirect, comunes), §8 | Providers, bienvenida, ingreso, cambio de rol, shells por rol, detalle del caso con línea de tiempo y `case_provider_test` | hecha |
 | 5 | Flujo del paciente | [05-flujo-paciente](2026-11-09-saludconecta-05-flujo-paciente.md) | §6 Paciente | Solicitar cita, mis citas, servicios, perfil, consentimiento con firma, sala de espera, videollamada, resultados con QR y encuesta | hecha |
-| 6 | Flujo de Admisión | al cerrar la 5 | §6 Admisión | Bandeja con filtros, *stepper* de los pasos 2–5 (con rechazo → privado), agenda y seguimiento | pendiente |
+| 6 | Flujo de Admisión | [06-flujo-admision](2026-11-10-saludconecta-06-flujo-admision.md) | §6 Admisión | Bandeja con filtros, *stepper* de los pasos 2–5 (con rechazo → privado), agenda y seguimiento | hecha |
 | 7 | Flujo del Médico | al cerrar la 6 | §6 Médico | Agenda, videollamada con notas clínicas y emisión de resultados | pendiente |
 | 8 | Flujo de Facturación | al cerrar la 7 | §6 Facturación | Pendientes, cierre (factura, reclamación, auditoría y pago) y reclamaciones | pendiente |
 | 9 | Indicadores | al cerrar la 8 | §7 | Las 4 pestañas con sus gráficas y KPIs, y las gráficas del perfil del paciente | pendiente |
