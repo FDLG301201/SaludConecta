@@ -16,6 +16,7 @@ import '../../features/billing/closure_screen.dart';
 import '../../features/doctor/consultation_screen.dart';
 import '../../features/doctor/doctor_agenda_screen.dart';
 import '../../features/doctor/issue_results_screen.dart';
+import '../../features/indicators/indicators_screen.dart';
 import '../../features/patient/appointments_screen.dart';
 import '../../features/patient/call/patient_video_call_screen.dart';
 import '../../features/patient/consent/consent_screen.dart';
@@ -99,7 +100,7 @@ class AppRouter {
             (context, state) => const FollowUpScreen(),
           ),
           _Tab(AppRoutes.admissionIndicators, 'Indicadores', Icons.insights_outlined, Icons.insights,
-              (context, state) => const ComingSoonScreen(title: 'Indicadores', stage: 9, inShell: true)),
+              (context, state) => const IndicatorsScreen()),
         ]),
         _shell(UserRole.doctor, [
           _Tab(
@@ -110,7 +111,7 @@ class AppRouter {
             (context, state) => const DoctorAgendaScreen(),
           ),
           _Tab(AppRoutes.doctorIndicators, 'Indicadores', Icons.insights_outlined, Icons.insights,
-              (context, state) => const ComingSoonScreen(title: 'Indicadores', stage: 9, inShell: true)),
+              (context, state) => const IndicatorsScreen()),
         ]),
         _shell(UserRole.billing, [
           _Tab(
@@ -123,7 +124,7 @@ class AppRouter {
           _Tab(AppRoutes.billingClaims, 'Reclamaciones', Icons.receipt_long_outlined, Icons.receipt_long,
               (context, state) => const ClaimsScreen()),
           _Tab(AppRoutes.billingIndicators, 'Indicadores', Icons.insights_outlined, Icons.insights,
-              (context, state) => const ComingSoonScreen(title: 'Indicadores', stage: 9, inShell: true)),
+              (context, state) => const IndicatorsScreen()),
         ]),
         GoRoute(
           path: '/caso/:id',

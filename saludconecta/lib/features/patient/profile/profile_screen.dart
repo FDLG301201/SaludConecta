@@ -12,9 +12,9 @@ import '../../../data/repositories/catalog_repository.dart';
 import '../../../state/case_provider.dart';
 import '../../../state/session_provider.dart';
 import 'insurance_card.dart';
+import 'my_summary.dart';
 
-/// "Perfil": carnet del seguro, datos personales y enlaces (Acerca de, Cambiar de rol, Cerrar sesión).
-/// La etapa 9 agrega "Mi resumen" con sus gráficas.
+/// "Perfil": carnet del seguro, datos personales, "Mi resumen" (gráficas) y enlaces (Acerca de, Cambiar de rol, Cerrar sesión).
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
@@ -48,6 +48,10 @@ class ProfileScreen extends StatelessWidget {
               ],
             ),
           ),
+          const SizedBox(height: 16),
+          Text('Mi resumen', style: theme.textTheme.titleLarge),
+          const SizedBox(height: 8),
+          MySummary(patientId: patient.id),
           const SizedBox(height: 12),
           Card(
             clipBehavior: Clip.antiAlias,

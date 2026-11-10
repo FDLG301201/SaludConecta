@@ -97,7 +97,7 @@ Estas reglas valen para **todas** las etapas.
 | 6 | Flujo de Admisión | [06-flujo-admision](2026-11-10-saludconecta-06-flujo-admision.md) | §6 Admisión | Bandeja con filtros, *stepper* de los pasos 2–5 (con rechazo → privado), agenda y seguimiento | hecha |
 | 7 | Flujo del Médico | [07-flujo-medico](2026-11-10-saludconecta-07-flujo-medico.md) | §6 Médico | Agenda, videollamada con notas clínicas y emisión de resultados | hecha |
 | 8 | Flujo de Facturación | [08-flujo-facturacion](2026-11-10-saludconecta-08-flujo-facturacion.md) | §6 Facturación | Pendientes, cierre (factura, reclamación, auditoría y pago) y reclamaciones | hecha |
-| 9 | Indicadores | al cerrar la 8 | §7 | Las 4 pestañas con sus gráficas y KPIs, y las gráficas del perfil del paciente | pendiente |
+| 9 | Indicadores | [09-indicadores](2026-11-10-saludconecta-09-indicadores.md) | §7 | Las 4 pestañas con sus gráficas y KPIs, y las gráficas del perfil del paciente | hecha |
 | 10 | Diagramas y Acerca de | al cerrar la 9 | §10, §6 Acerca de | Diagramas de flujo y de carriles con `CustomPainter`, modo caso, diagrama de arquitectura y Acerca de | pendiente |
 | 11 | Cierre | al cerrar la 10 | §12, §14 | Pruebas de widgets, `analyze`, verificación en Chrome y Android, y README con el guion de demo | pendiente |
 
