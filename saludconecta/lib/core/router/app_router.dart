@@ -10,6 +10,9 @@ import '../../features/auth/patient_login_screen.dart';
 import '../../features/auth/role_selection_screen.dart';
 import '../../features/auth/staff_login_screen.dart';
 import '../../features/auth/welcome_screen.dart';
+import '../../features/billing/billing_pending_screen.dart';
+import '../../features/billing/claims_screen.dart';
+import '../../features/billing/closure_screen.dart';
 import '../../features/doctor/consultation_screen.dart';
 import '../../features/doctor/doctor_agenda_screen.dart';
 import '../../features/doctor/issue_results_screen.dart';
@@ -24,7 +27,6 @@ import '../../features/patient/services_screen.dart';
 import '../../features/patient/survey/survey_screen.dart';
 import '../../features/patient/waiting_room/waiting_room_screen.dart';
 import '../../features/shared/case_detail/case_detail_screen.dart';
-import '../../features/shared/case_list_screen.dart';
 import '../../features/shared/not_found_screen.dart';
 import '../../features/shared/role_shell.dart';
 import '../../state/session_provider.dart';
@@ -116,14 +118,10 @@ class AppRouter {
             'Pendientes',
             Icons.pending_actions_outlined,
             Icons.pending_actions,
-            (context, state) => CaseListScreen(
-              title: 'Pendientes de cierre',
-              subtitle: 'Casos con el paso 9 pendiente',
-              select: (cases, session) => cases.billingInbox(),
-            ),
+            (context, state) => const BillingPendingScreen(),
           ),
           _Tab(AppRoutes.billingClaims, 'Reclamaciones', Icons.receipt_long_outlined, Icons.receipt_long,
-              (context, state) => const ComingSoonScreen(title: 'Reclamaciones', stage: 8, inShell: true)),
+              (context, state) => const ClaimsScreen()),
           _Tab(AppRoutes.billingIndicators, 'Indicadores', Icons.insights_outlined, Icons.insights,
               (context, state) => const ComingSoonScreen(title: 'Indicadores', stage: 9, inShell: true)),
         ]),
@@ -164,7 +162,7 @@ class AppRouter {
         CaseAction.process => ProcessCaseScreen(caseId: caseId),
         CaseAction.consultation => ConsultationScreen(caseId: caseId),
         CaseAction.issueResults => IssueResultsScreen(caseId: caseId),
-        CaseAction.closure => const ComingSoonScreen(title: 'Cierre administrativo', stage: 8),
+        CaseAction.closure => ClosureScreen(caseId: caseId),
       };
 
   /// Shell de un rol: una rama por pestaña (`StatefulShellRoute.indexedStack` conserva cada pestaña).
