@@ -99,7 +99,7 @@ Estas reglas valen para **todas** las etapas.
 | 8 | Flujo de Facturación | [08-flujo-facturacion](2026-11-10-saludconecta-08-flujo-facturacion.md) | §6 Facturación | Pendientes, cierre (factura, reclamación, auditoría y pago) y reclamaciones | hecha |
 | 9 | Indicadores | [09-indicadores](2026-11-10-saludconecta-09-indicadores.md) | §7 | Las 4 pestañas con sus gráficas y KPIs, y las gráficas del perfil del paciente | hecha |
 | 10 | Diagramas y Acerca de | [10-diagramas-y-acerca](2026-11-10-saludconecta-10-diagramas-y-acerca.md) | §10, §6 Acerca de | Diagramas de flujo y de carriles con `CustomPainter`, modo caso, diagrama de arquitectura y Acerca de | hecha |
-| 11 | Cierre | al cerrar la 10 | §12, §14 | Pruebas de widgets, `analyze`, verificación en Chrome y Android, y README con el guion de demo | pendiente |
+| 11 | Cierre | [11-cierre](2026-11-10-saludconecta-11-cierre.md) | §12, §14 | Pruebas de widgets, `analyze`, verificación en Chrome y Android, y README con el guion de demo | hecha |
 
 ## Entorno verificado (2026-11-09)
 
