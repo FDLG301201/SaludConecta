@@ -16,6 +16,8 @@ class RoleSwitcherSheet extends StatelessWidget {
 
   static Future<void> show(BuildContext context) => showModalBottomSheet<void>(
         context: context,
+        // Desde Perfil se abre dentro de una pestaña: con el Navigator raíz cubre toda la app.
+        useRootNavigator: true,
         showDragHandle: true,
         isScrollControlled: true,
         builder: (context) => const RoleSwitcherSheet(),

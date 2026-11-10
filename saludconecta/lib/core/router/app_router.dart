@@ -6,7 +6,16 @@ import '../../features/auth/patient_login_screen.dart';
 import '../../features/auth/role_selection_screen.dart';
 import '../../features/auth/staff_login_screen.dart';
 import '../../features/auth/welcome_screen.dart';
+import '../../features/patient/appointments_screen.dart';
+import '../../features/patient/call/patient_video_call_screen.dart';
+import '../../features/patient/consent/consent_screen.dart';
 import '../../features/patient/patient_home_screen.dart';
+import '../../features/patient/profile/profile_screen.dart';
+import '../../features/patient/request/request_appointment_screen.dart';
+import '../../features/patient/results/results_screen.dart';
+import '../../features/patient/services_screen.dart';
+import '../../features/patient/survey/survey_screen.dart';
+import '../../features/patient/waiting_room/waiting_room_screen.dart';
 import '../../features/shared/case_detail/case_detail_screen.dart';
 import '../../features/shared/case_list_screen.dart';
 import '../../features/shared/not_found_screen.dart';
@@ -49,15 +58,19 @@ class AppRouter {
           _Tab(AppRoutes.patientHome, 'Inicio', Icons.home_outlined, Icons.home,
               (context, state) => const PatientHomeScreen()),
           _Tab(AppRoutes.patientAppointments, 'Mis citas', Icons.event_note_outlined, Icons.event_note,
-              (context, state) => const ComingSoonScreen(title: 'Mis citas', stage: 5, inShell: true)),
+              (context, state) => const AppointmentsScreen()),
           _Tab(AppRoutes.patientServices, 'Servicios', Icons.medical_services_outlined, Icons.medical_services,
-              (context, state) => const ComingSoonScreen(title: 'Servicios', stage: 5, inShell: true)),
+              (context, state) => const ServicesScreen()),
           _Tab(AppRoutes.patientProfile, 'Perfil', Icons.person_outline, Icons.person,
-              (context, state) => const ComingSoonScreen(title: 'Perfil', stage: 5, inShell: true)),
+              (context, state) => const ProfileScreen()),
         ]),
         GoRoute(
           path: AppRoutes.requestAppointmentPath,
-          builder: (context, state) => const ComingSoonScreen(title: 'Solicitar cita', stage: 5),
+          // `?servicio=` y `?fecha=` llegan desde Servicios y desde los resultados (cita de seguimiento).
+          builder: (context, state) => RequestAppointmentScreen(
+            initialServiceId: state.uri.queryParameters['servicio'],
+            initialDate: DateTime.tryParse(state.uri.queryParameters['fecha'] ?? ''),
+          ),
         ),
         _shell(UserRole.admission, [
           _Tab(
@@ -128,7 +141,10 @@ class AppRouter {
               builder: (context, state) => const ComingSoonScreen(title: 'Diagrama del caso', stage: 10),
             ),
             for (final action in CaseAction.values)
-              GoRoute(path: action.segment, builder: (context, state) => _pendingAction(action)),
+              GoRoute(
+                path: action.segment,
+                builder: (context, state) => _caseAction(action, state.pathParameters['id']!),
+              ),
           ],
         ),
         GoRoute(
@@ -143,13 +159,13 @@ class AppRouter {
     );
   }
 
-  /// Pantalla provisional de cada acción sobre un caso, hasta la etapa que la construye.
-  static Widget _pendingAction(CaseAction action) => switch (action) {
-        CaseAction.consent => const ComingSoonScreen(title: 'Consentimiento informado', stage: 5),
-        CaseAction.waitingRoom => const ComingSoonScreen(title: 'Sala de espera', stage: 5),
-        CaseAction.videoCall => const ComingSoonScreen(title: 'Videollamada', stage: 5),
-        CaseAction.results => const ComingSoonScreen(title: 'Resultados', stage: 5),
-        CaseAction.survey => const ComingSoonScreen(title: 'Encuesta de satisfacción', stage: 5),
+  /// Pantalla de cada acción sobre un caso; las que aún no se construyen apuntan a `ComingSoonScreen`.
+  static Widget _caseAction(CaseAction action, String caseId) => switch (action) {
+        CaseAction.consent => ConsentScreen(caseId: caseId),
+        CaseAction.waitingRoom => WaitingRoomScreen(caseId: caseId),
+        CaseAction.videoCall => PatientVideoCallScreen(caseId: caseId),
+        CaseAction.results => ResultsScreen(caseId: caseId),
+        CaseAction.survey => SurveyScreen(caseId: caseId),
         CaseAction.process => const ComingSoonScreen(title: 'Procesar solicitud', stage: 6),
         CaseAction.consultation => const ComingSoonScreen(title: 'Consulta', stage: 7),
         CaseAction.issueResults => const ComingSoonScreen(title: 'Emitir resultados', stage: 7),

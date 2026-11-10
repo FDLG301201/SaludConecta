@@ -38,8 +38,8 @@ class CaseDetailScreen extends StatelessWidget {
     final role = session.role;
     if (role == null) return const SizedBox.shrink();
     final catalog = context.read<CatalogRepository>();
-    final canCancel =
-        role == UserRole.patient && c.patientId == session.currentPatient?.id && ProcessRules.canPatientCancel(c);
+    final ownCase = role == UserRole.patient && c.patientId == session.currentPatient?.id;
+    final canCancel = ownCase && ProcessRules.canPatientCancel(c);
     return Scaffold(
       appBar: AppBar(title: Text('Caso ${c.id}')),
       body: PageBody(
@@ -68,6 +68,12 @@ class CaseDetailScreen extends StatelessWidget {
               spacing: 12,
               runSpacing: 8,
               children: [
+                if (ownCase && c.results != null)
+                  FilledButton.icon(
+                    onPressed: () => context.push(AppRoutes.caseAction(c.id, CaseAction.results)),
+                    icon: const Icon(Icons.receipt_long),
+                    label: const Text('Ver mis resultados'),
+                  ),
                 OutlinedButton.icon(
                   onPressed: () => context.push(AppRoutes.caseDiagram(c.id)),
                   icon: const Icon(Icons.account_tree_outlined),

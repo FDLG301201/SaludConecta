@@ -16,8 +16,22 @@ class AppRoutes {
   static const patientServices = '/paciente/servicios';
   static const patientProfile = '/paciente/perfil';
   static const requestAppointmentPath = '/paciente/solicitar';
-  static String requestAppointment({String? serviceId}) =>
-      serviceId == null ? requestAppointmentPath : '$requestAppointmentPath?servicio=$serviceId';
+
+  /// Asistente "Solicitar cita". Puede llevar el servicio y la fecha preferida ya elegidos
+  /// (desde Servicios, o desde los resultados para la cita de seguimiento).
+  static String requestAppointment({String? serviceId, DateTime? preferredDate}) {
+    final query = <String, String>{
+      if (serviceId != null) 'servicio': serviceId,
+      if (preferredDate != null) 'fecha': isoDate(preferredDate),
+    };
+    return Uri(path: requestAppointmentPath, queryParameters: query.isEmpty ? null : query).toString();
+  }
+
+  /// Fecha para la URL, p. ej. "2026-12-09"; `DateTime.tryParse` la lee de vuelta.
+  static String isoDate(DateTime value) {
+    String two(int n) => n.toString().padLeft(2, '0');
+    return '${value.year}-${two(value.month)}-${two(value.day)}';
+  }
 
   // Admisión.
   static const admissionInbox = '/admision';
